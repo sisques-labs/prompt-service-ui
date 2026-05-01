@@ -1,13 +1,11 @@
 "use client";
 import { ApolloProvider } from "@apollo/client/react";
-import { useMemo } from "react";
 import { Toaster } from "@/components/ui/sonner";
-import { makeApolloClient } from "@/app/lib/graphql";
+import { promptsClient } from "@/app/lib/apollo";
 
 export function Providers({ children }: { children: React.ReactNode }) {
-  const client = useMemo(() => makeApolloClient(), []);
   return (
-    <ApolloProvider client={client}>
+    <ApolloProvider client={promptsClient}>
       {children}
       <Toaster richColors position="bottom-right" />
     </ApolloProvider>
